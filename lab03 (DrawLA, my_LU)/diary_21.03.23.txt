@@ -1,0 +1,149 @@
+figure(1); clf;
+a = [3 1]'; b = [-2 1]';
+drawVector([a b], 'g->', {'a', 'b'});
+title('Draw two vectors')
+pause
+
+
+a = [1 2 3]'; b = [3 -1 2]'; 
+figure(2);clf; hold on;
+drawVector([a b], {'a','b'});       % Plot the vectors
+drawLine([a b], 'r3');              % Draw a line between them
+view(15,5);
+pause;
+view(60,10);
+hold off;
+title('Draw a line in 3D with drawLine()')
+
+
+
+a = rand(5,5);
+[l,u] = my_lu(a);
+dispMEq('A=L*U',a,l,u)
+a-l*u
+
+ans =
+
+   1.0e-15 *
+
+         0         0         0         0         0
+         0         0         0         0    0.1110
+         0         0         0         0         0
+         0         0         0         0         0
+         0         0   -0.3331         0    0.2220
+
+clear all;
+n=(50:50:400);
+for  ii = 1:length(n)
+   nn = n(ii)
+   a = rand(nn,nn); 
+   tStart = tic;
+   for j=1:5 , [l,u] = my_lu(a);  end  
+   time(ii)=toc(tStart)/5
+end
+
+nn =
+
+    50
+
+
+time =
+
+    0.0029
+
+
+nn =
+
+   100
+
+
+time =
+
+    0.0029    0.0066
+
+
+nn =
+
+   150
+
+
+time =
+
+    0.0029    0.0066    0.0043
+
+
+nn =
+
+   200
+
+
+time =
+
+    0.0029    0.0066    0.0043    0.0075
+
+
+nn =
+
+   250
+
+
+time =
+
+    0.0029    0.0066    0.0043    0.0075    0.0131
+
+
+nn =
+
+   300
+
+
+time =
+
+    0.0029    0.0066    0.0043    0.0075    0.0131    0.0214
+
+
+nn =
+
+   350
+
+
+time =
+
+  Columns 1 through 6
+
+    0.0029    0.0066    0.0043    0.0075    0.0131    0.0214
+
+  Column 7
+
+    0.0347
+
+
+nn =
+
+   400
+
+
+time =
+
+  Columns 1 through 6
+
+    0.0029    0.0066    0.0043    0.0075    0.0131    0.0214
+
+  Columns 7 through 8
+
+    0.0347    0.0560
+
+%% grafikh anaparastash xronou kai ypologistikou kostous
+figure(10)
+loglog(n,time,n, 2*n.^3/3) 
+(n,time,n, 2*n.^3/3)
+ (n,time,n, 2*n.^3/3)
+   ↑
+{Error: Invalid expression. When calling a function or indexing a
+variable, use parentheses. Otherwise, check for mismatched
+delimiters.
+} 
+figure(11) ; plot(n,time,n, 2*n.^3/3)
+figure(11) ; plot(n,time)
+figure(12) ; plot(n,time,n, 2*n.^3/3)
+diary off

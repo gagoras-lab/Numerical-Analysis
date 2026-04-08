@@ -1,0 +1,812 @@
+help for
+ <strong>for</strong>    Repeat statements a specific number of times.
+    The general form of a <strong>for</strong> statement is:
+  
+       <strong>for</strong> variable = expr, statement, ..., statement END
+  
+    The columns of the expression are stored one at a time in
+    the variable and then the following statements, up to the
+    END, are executed. The expression is often of the form X:Y,
+    in which case its columns are simply scalars. Some examples
+    (assume N has already been assigned a value).
+  
+         for R = 1:N
+             for C = 1:N
+                 A(R,C) = 1/(R+C-1);
+             end
+         end
+  
+    Step S with increments of -0.1
+         for S = 1.0: -0.1: 0.0, do_some_task(S), end
+ 
+    Set E to the unit N-vectors
+         for E = eye(N), do_some_task(E), end
+ 
+    Long loops are more memory efficient when the colon expression appears
+    in the <strong>for</strong> statement since the index vector is never created.
+ 
+    The BREAK statement can be used to terminate the loop prematurely.
+ 
+    See also <a href="matlab:help parfor">parfor</a>, <a href="matlab:help if">if</a>, <a href="matlab:help while">while</a>, <a href="matlab:help switch">switch</a>, <a href="matlab:help break">break</a>, <a href="matlab:help continue">continue</a>, <a href="matlab:help end">end</a>, <a href="matlab:help colon">colon</a>.
+
+    <a href="matlab:doc for">Documentation for for</a>
+
+
+
+n = input('DWSTE TH DIASTASH TOU DIANYSMATOS a ');
+DWSTE TH DIASTASH TOU DIANYSMATOS a 5
+disp('ORISTE TO DIANYSMA a');
+ORISTE TO DIANYSMA a
+for k =1:n
+  fprintf('DWSTE TO STOIXEIO %5d TOY DIANYSMATOS a ',k );
+  a(k) = input(' ');
+end
+DWSTE TO STOIXEIO     1 TOY DIANYSMATOS a  4
+DWSTE TO STOIXEIO     2 TOY DIANYSMATOS a  3
+DWSTE TO STOIXEIO     3 TOY DIANYSMATOS a  7
+DWSTE TO STOIXEIO     4 TOY DIANYSMATOS a  8
+DWSTE TO STOIXEIO     5 TOY DIANYSMATOS a  1
+
+
+
+help while
+ <strong>while</strong>  Repeat statements an indefinite number of times.
+    The general form of a <strong>while</strong> statement is:
+  
+       <strong>while</strong> expression
+         statements
+       END
+  
+    The statements are executed while the real part of the expression
+    has all non-zero elements. The expression is usually the result of
+    expr rop expr where rop is ==, <, >, <=, >=, or ~=.
+ 
+    The BREAK statement can be used to terminate the loop prematurely.
+ 
+    For example (assuming A already defined):
+  
+            E = 0*A; F = E + eye(size(E)); N = 1;
+            while norm(E+F-E,1) > 0,
+               E = E + F;
+               F = A*F/N;
+               N = N + 1;
+            end
+ 
+    See also <a href="matlab:help for">for</a>, <a href="matlab:help if">if</a>, <a href="matlab:help switch">switch</a>, <a href="matlab:help break">break</a>, <a href="matlab:help continue">continue</a>, <a href="matlab:help end">end</a>.
+
+    <a href="matlab:doc while">Documentation for while</a>
+
+
+
+k=1;
+while k <= length(a)
+  fprintf('a(%1d) = %10.5f \n', k, a(k)); 
+  k=k+1;
+end
+a(1) =    4.00000 
+a(2) =    3.00000 
+a(3) =    7.00000 
+a(4) =    8.00000 
+a(5) =    1.00000 
+
+
+help pause
+ <strong>pause</strong> Wait for user response.
+    <strong>pause</strong>(n) pauses for n seconds before continuing, where n can also be a
+    fraction. The resolution of the clock is platform specific. Fractional
+    pauses of 0.01 seconds should be supported on most platforms.
+ 
+    <strong>pause</strong> causes a procedure to stop and wait for the user to strike any
+    key before continuing.
+ 
+    <strong>pause</strong> OFF indicates that any subsequent <strong>pause</strong> or <strong>pause</strong>(n) commands
+    should not actually pause. This allows normally interactive scripts to
+    run unattended.
+ 
+    <strong>pause</strong> ON indicates that subsequent <strong>pause</strong> commands should pause.
+ 
+    <strong>pause</strong> QUERY returns the current state of pause, either 'on' or 'off'.
+ 
+    STATE = <strong>pause</strong>(...) returns the state of pause previous to processing
+    the input arguments.
+ 
+    The accuracy of <strong>pause</strong> is subject to the scheduling resolution of the
+    operating system you are using and also to other system activity. It
+    cannot be guaranteed with 100% confidence, but only with some expected
+    error. For example, experiments have shown that choosing N with a
+    resolution of .1 (such as N = 1.7) leads to actual pause values that
+    are correct to roughly 10% in the relative error of the fractional
+    part. Asking for finer resolutions (such as .01) shows higher relative
+    error.
+ 
+    Examples:
+        % Pause for 5 seconds
+        pause(5)
+ 
+        % Temporarily disable pause
+        pause off
+        pause(5) % Note that this does not pause
+        pause on
+ 
+        % Alternatively, disable/restore the state
+        pstate = pause('off')
+        pause(5) % Note that this does not pause
+        pause(pstate);
+ 
+    See also <a href="matlab:help keyboard">keyboard</a>, <a href="matlab:help input">input</a>.
+
+    <a href="matlab:doc pause">Documentation for pause</a>
+
+
+
+fprintf('TO AQROISMA TWN STOIXEIWN TOY DIANYSMATOS a EINAI ISO ME:: %10.5f \n', sum(a));
+TO AQROISMA TWN STOIXEIWN TOY DIANYSMATOS a EINAI ISO ME::   23.00000 
+
+pause
+
+%% ORISMOI PINAKWN
+disp('ORISMOI PINAKWN')
+ORISMOI PINAKWN
+d = [1 3 4 6 ; 3 7 8 9];
+
+e = [16 20
+      9 18];
+   
+g = [3 5 ; 7 9];
+d
+
+d =
+
+     1     3     4     6
+     3     7     8     9
+
+e
+
+e =
+
+    16    20
+     9    18
+
+d1 = [1 2 3 4 5]
+
+d1 =
+
+     1     2     3     4     5
+
+
+d2 = [0 9 8 7 6]
+
+d2 =
+
+     0     9     8     7     6
+
+
+c1 = [d1 d2]
+
+c1 =
+
+     1     2     3     4     5     0     9     8     7     6
+
+
+c2 = [d1 ; d2]
+
+c2 =
+
+     1     2     3     4     5
+     0     9     8     7     6
+
+
+c3 = [d1' d2']
+
+c3 =
+
+     1     0
+     2     9
+     3     8
+     4     7
+     5     6
+
+
+c4 = [d1; d2]'
+
+c4 =
+
+     1     0
+     2     9
+     3     8
+     4     7
+     5     6
+
+% KATASKEYH PINAKWN APO GINOMENO DIANYSMATWN
+x = [1 2 3 4 5 6 7]
+
+x =
+
+     1     2     3     4     5     6     7
+
+for k =1:1:length(x)
+  y(k) = k*1.45;   
+end
+y
+
+y =
+
+  Columns 1 through 6
+
+    1.4500    2.9000    4.3500    5.8000    7.2500    8.7000
+
+  Column 7
+
+   10.1500
+
+x' * y
+
+ans =
+
+  Columns 1 through 6
+
+    1.4500    2.9000    4.3500    5.8000    7.2500    8.7000
+    2.9000    5.8000    8.7000   11.6000   14.5000   17.4000
+    4.3500    8.7000   13.0500   17.4000   21.7500   26.1000
+    5.8000   11.6000   17.4000   23.2000   29.0000   34.8000
+    7.2500   14.5000   21.7500   29.0000   36.2500   43.5000
+    8.7000   17.4000   26.1000   34.8000   43.5000   52.2000
+   10.1500   20.3000   30.4500   40.6000   50.7500   60.9000
+
+  Column 7
+
+   10.1500
+   20.3000
+   30.4500
+   40.6000
+   50.7500
+   60.9000
+   71.0500
+
+p1 = zeros(3,2)
+
+p1 =
+
+     0     0
+     0     0
+     0     0
+
+pause
+p2 = eye(5)
+
+p2 =
+
+     1     0     0     0     0
+     0     1     0     0     0
+     0     0     1     0     0
+     0     0     0     1     0
+     0     0     0     0     1
+
+pause
+p3 = ones(4,3)
+
+p3 =
+
+     1     1     1
+     1     1     1
+     1     1     1
+     1     1     1
+
+a
+
+a =
+
+     4     3     7     8     1
+
+meg_pin =size(a)
+
+meg_pin =
+
+     1     5
+
+rows = size(a,1)
+
+rows =
+
+     1
+
+columns = size(a,2)
+
+columns =
+
+     5
+
+lab02_fin
+DWSTE TH DIASTASH TOU DIANYSMATOS a 4
+ORISTE TO DIANYSMA a
+DWSTE TO STOIXEIO     1 TOY DIANYSMATOS a  12
+DWSTE TO STOIXEIO     2 TOY DIANYSMATOS a  2
+DWSTE TO STOIXEIO     3 TOY DIANYSMATOS a  3
+DWSTE TO STOIXEIO     4 TOY DIANYSMATOS a  4
+a(1) =   12.00000 
+a(2) =    2.00000 
+a(3) =    3.00000 
+a(4) =    4.00000 
+TO AQROISMA TWN STOIXEIWN TOY DIANYSMATOS a EINAI ISO ME::   21.00000 
+ORISMOI PINAKWN
+
+a =
+
+    11    12    13    14
+    21    22    23    24
+
+
+b =
+
+    11    12    13
+    21    22    23
+
+
+d1 =
+
+     1     2     3     4     5
+
+
+d2 =
+
+     0     9     8     7     6
+
+
+c1 =
+
+     1     2     3     4     5     0     9     8     7     6
+
+
+c2 =
+
+     1     2     3     4     5
+     0     9     8     7     6
+
+
+c3 =
+
+     1     0
+     2     9
+     3     8
+     4     7
+     5     6
+
+
+c4 =
+
+     1     0
+     2     9
+     3     8
+     4     7
+     5     6
+
+
+x =
+
+     1     2     3     4     5     6     7
+
+
+ans =
+
+  Columns 1 through 6
+
+    1.4500    2.9000    4.3500    5.8000    7.2500    8.7000
+    2.9000    5.8000    8.7000   11.6000   14.5000   17.4000
+    4.3500    8.7000   13.0500   17.4000   21.7500   26.1000
+    5.8000   11.6000   17.4000   23.2000   29.0000   34.8000
+    7.2500   14.5000   21.7500   29.0000   36.2500   43.5000
+    8.7000   17.4000   26.1000   34.8000   43.5000   52.2000
+   10.1500   20.3000   30.4500   40.6000   50.7500   60.9000
+
+  Column 7
+
+   10.1500
+   20.3000
+   30.4500
+   40.6000
+   50.7500
+   60.9000
+   71.0500
+
+
+p1 =
+
+     0     0
+     0     0
+     0     0
+
+
+p2 =
+
+     1     0     0     0     0
+     0     1     0     0     0
+     0     0     1     0     0
+     0     0     0     1     0
+     0     0     0     0     1
+
+
+p3 =
+
+     1     1     1
+     1     1     1
+     1     1     1
+     1     1     1
+
+
+a =
+
+    11    12    13    14
+    21    22    23    24
+
+
+meg_pin =
+
+     2     4
+
+
+rows =
+
+     2
+
+
+columns =
+
+     4
+
+o pinakas den einai tetragwnkos
+
+a =
+
+    11    12    13    14
+    21    22    23    24
+
+
+ans =
+
+    21
+
+
+ans =
+
+    13
+
+
+ans =
+
+    11    12    13    14
+
+
+ans =
+
+    13
+    23
+
+
+c =
+
+        2441        2598
+
+To synoliko kostos gia thn prwth etaireia
+
+c1 =
+
+        2441
+
+To synoliko kostos gia th deyterh etaireia
+
+c2 =
+
+        2598
+
+
+c3 =
+
+     1     0
+     2     9
+     3     8
+     4     7
+     5     6
+
+
+c4 =
+
+     1     0
+     2     9
+     3     8
+     4     7
+     5     6
+
+
+prosqesh =
+
+     2     0
+     4    18
+     6    16
+     8    14
+    10    12
+
+
+a =
+
+    11    12    13    14
+    21    22    23    24
+
+
+p3 =
+
+     1     1     1
+     1     1     1
+     1     1     1
+     1     1     1
+
+
+pol1 =
+
+    50    50    50
+    90    90    90
+
+
+pol2 =
+
+     1     0
+     4    81
+     9    64
+    16    49
+    25    36
+
+
+pol3 =
+
+     1   NaN
+     1     1
+     1     1
+     1     1
+     1     1
+
+
+count =
+
+     5
+
+
+count =
+
+     3
+
+
+p1 =
+
+     0     0
+     0     0
+     0     0
+
+
+p2 =
+
+     1     0     0     0     0
+     0     1     0     0     0
+     0     0     1     0     0
+     0     0     0     1     0
+     0     0     0     0     1
+
+
+p3 =
+
+     1     1     1
+     1     1     1
+     1     1     1
+     1     1     1
+
+
+a =
+
+    11    12    13    14
+    21    22    23    24
+
+
+meg_pin =
+
+     2     4
+
+
+rows =
+
+     2
+
+
+columns =
+
+     4
+
+o pinakas den einai tetragwnkos
+{Operation terminated by user during
+<a href="matlab:matlab.internal.language.introspective.errorDocCallback('LiveEditorEvaluationHelperESectionEval36c71b60', '/private/var/folders/zl/_bf1wys16q98z75fv59qq9f40000gn/T/Editor_vxdxq/LiveEditorEvaluationHelperESectionEval36c71b60.mlx', 109)" style="font-weight:bold">LiveEditorEvaluationHelperESectionEval36c71b60</a> (<a href="matlab: opentoline('/private/var/folders/zl/_bf1wys16q98z75fv59qq9f40000gn/T/Editor_vxdxq/LiveEditorEvaluationHelperESectionEval36c71b60.mlx',109,0)">line 109</a>)
+
+
+In matlab.internal.editor.evaluateCode
+} 
+
+p1 =
+
+     0     0
+     0     0
+     0     0
+
+
+p2 =
+
+     1     0     0     0     0
+     0     1     0     0     0
+     0     0     1     0     0
+     0     0     0     1     0
+     0     0     0     0     1
+
+
+p3 =
+
+     1     1     1
+     1     1     1
+     1     1     1
+     1     1     1
+
+
+a =
+
+    11    12    13    14
+    21    22    23    24
+
+
+meg_pin =
+
+     2     4
+
+
+rows =
+
+     2
+
+
+columns =
+
+     4
+
+o pinakas den einai tetragwnkos
+{Operation terminated by user during
+<a href="matlab:matlab.internal.language.introspective.errorDocCallback('LiveEditorEvaluationHelperESectionEval36c71b60', '/private/var/folders/zl/_bf1wys16q98z75fv59qq9f40000gn/T/Editor_vxdxq/LiveEditorEvaluationHelperESectionEval36c71b60.mlx', 109)" style="font-weight:bold">LiveEditorEvaluationHelperESectionEval36c71b60</a> (<a href="matlab: opentoline('/private/var/folders/zl/_bf1wys16q98z75fv59qq9f40000gn/T/Editor_vxdxq/LiveEditorEvaluationHelperESectionEval36c71b60.mlx',109,0)">line 109</a>)
+
+
+In matlab.internal.editor.evaluateCode
+} 
+help if
+ <strong>if</strong> Conditionally execute statements.
+    The general form of the <strong>if</strong> statement is
+ 
+       <strong>if</strong> expression
+         statements
+       ELSEIF expression
+         statements
+       ELSE
+         statements
+       END
+ 
+    The statements are executed if the real part of the expression 
+    has all non-zero elements. The ELSE and ELSEIF parts are optional.
+    Zero or more ELSEIF parts can be used as well as nested <strong>if</strong>'s.
+    The expression is usually of the form expr rop expr where 
+    rop is ==, <, >, <=, >=, or ~=.
+ 
+    Example
+       if I == J
+         A(I,J) = 2;
+       elseif abs(I-J) == 1
+         A(I,J) = -1;
+       else
+         A(I,J) = 0;
+       end
+ 
+    See also RELOP, <a href="matlab:help else">else</a>, <a href="matlab:help elseif">elseif</a>, <a href="matlab:help end">end</a>, <a href="matlab:help for">for</a>, <a href="matlab:help while">while</a>, <a href="matlab:help switch">switch</a>.
+
+    <a href="matlab:doc if">Documentation for if</a>
+
+c3
+
+c3 =
+
+     1     0
+     2     9
+     3     8
+     4     7
+     5     6
+
+c4
+
+c4 =
+
+     1     0
+     2     9
+     3     8
+     4     7
+     5     6
+
+c3.*c4
+
+ans =
+
+     1     0
+     4    81
+     9    64
+    16    49
+    25    36
+
+c3*c4
+{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('mtimes')" style="font-weight:bold"> * </a>
+Incorrect dimensions for matrix multiplication. Check that the number
+of columns in the first matrix matches the number of rows in the
+second matrix. To perform elementwise multiplication, use '.*'.
+} 
+c3.^3
+
+ans =
+
+     1     0
+     8   729
+    27   512
+    64   343
+   125   216
+
+c3./2
+
+ans =
+
+    0.5000         0
+    1.0000    4.5000
+    1.5000    4.0000
+    2.0000    3.5000
+    2.5000    3.0000
+
+c3./c4
+
+ans =
+
+     1   NaN
+     1     1
+     1     1
+     1     1
+     1     1
+
+c = [1 2 4 5 7 10 11];
+v = [2 4 10 12 14 -1];
+count = countEven(v)
+
+count =
+
+     5
+
+count = countEven(c)
+
+count =
+
+     3
+
+help countEven
+ Filename - <strong>countEven</strong>.m
+ function - c = <strong>countEven</strong>(v)
+  This function counts the number of even
+  integers in vector v and returns the
+  count in c
+
+count = countEven(c)
+
+count =
+
+     3
+
+st_pin(a,1,1)
+{'st_pin' is not found in the current folder or on the MATLAB path,
+but exists in:
+    /Users/yota/Desktop/ECE220/21Spring/lectures_labs/lab01
+
+<a href = "matlab:matlab.internal.language.commandline.executeCode('cd ''/Users/yota/Desktop/ECE220/21Spring/lectures_labs/lab01''')">Change the MATLAB current folder</a> or <a href = "matlab:matlab.internal.language.commandline.executeCode('addpath ''/Users/yota/Desktop/ECE220/21Spring/lectures_labs/lab01''')">add its folder to the MATLAB
+path</a>.
+} 
+diary off
